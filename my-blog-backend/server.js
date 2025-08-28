@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
 app.use(cors({
-    origin:"https://blog-website-beige-nu.vercel.app/",
+    origin:"https://blog-website-khaki-one.vercel.app",
     credentials:true
 }))
 
