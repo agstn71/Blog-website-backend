@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
 app.use(cors({
-    origin:"https://blog-agstn.vercel.app",
+    origin:["https://blog-agstn.vercel.app",
+    "http://localhost:3000"],
     credentials:true
 }))
 

@@ -35,6 +35,7 @@ export const createBlog = async (req,res) => {
 }
 
 export const updateBlog = async (req, res) => {
+    console.log("inside update blog")
     try {
         const blogId = req.params.blogId;
         const { title, subtitle, description, category } = req.body;
@@ -56,7 +57,7 @@ export const updateBlog = async (req, res) => {
             subtitle,
             description,
             category,
-            author: req.id, // make sure req.id comes from auth middleware
+            author: req.user.id, // make sure req.id comes from auth middleware
             thumbnail: thumbnailUrl
         };
 
@@ -133,7 +134,7 @@ export const togglePublishBlog = async (req,res) => {
 
 export const getOwnBlogs = async (req, res) => {
     try {
-        const userId = req.id; // Assuming `req.id` contains the authenticated user’s ID
+        const userId = req.user.id; 
 
         if (!userId) {
             return res.status(400).json({ message: "User ID is required." });
@@ -158,7 +159,7 @@ export const getOwnBlogs = async (req, res) => {
 export const deleteBlog = async (req, res) => {
     try {
         const blogId = req.params.id;
-        const authorId = req.id
+        const authorId = req.user.id
         const blog = await Blog.findById(blogId);
         if (!blog) {
             return res.status(404).json({ success: false, message: "Blog not found" });
