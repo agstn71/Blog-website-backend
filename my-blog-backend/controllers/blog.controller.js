@@ -157,6 +157,7 @@ export const getOwnBlogs = async (req, res) => {
 
 // Delete a blog post
 export const deleteBlog = async (req, res) => {
+    console.log("inside delete blog function")
     try {
         const blogId = req.params.id;
         const authorId = req.user.id
